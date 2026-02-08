@@ -19,8 +19,7 @@ import { NotificationService } from '../../../../../core/services/notification.s
     ProductsTableComponent,
     PaginationControlComponent,
     SkeletonTableComponent,
-    ModalComponent,
-    RouterLink
+    ModalComponent
   ],
   templateUrl: './list-page.component.html',
   styleUrl: './list-page.component.scss'
