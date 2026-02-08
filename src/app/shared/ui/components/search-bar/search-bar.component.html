@@ -1,1 +1,3 @@
-<input type="text" placeholder="Search..." class="search-input" (input)="onSearch($event)">
+<label for="product-search" class="sr-only">Buscar productos</label>
+<input type="text" id="product-search" placeholder="Buscar..." class="search-input" (input)="onSearch($event)"
+    aria-label="Buscar productos">

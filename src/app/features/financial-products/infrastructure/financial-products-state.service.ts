@@ -22,6 +22,16 @@ export class FinancialProductsStateService {
     return filtered.slice(0, this._limit());
   });
 
+  readonly filteredCount = computed(() => {
+    const query = this._searchQuery().toLowerCase();
+    const allProducts = this._products();
+
+    return allProducts.filter(p =>
+      p.name.toLowerCase().includes(query) ||
+      p.description.toLowerCase().includes(query)
+    ).length;
+  });
+
   readonly totalFound = computed(() => this.filteredProducts().length);
 
   setSearchQuery(query: string): void { this._searchQuery.set(query); }

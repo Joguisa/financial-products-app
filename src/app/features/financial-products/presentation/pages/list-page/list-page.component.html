@@ -8,14 +8,15 @@
 
     <div class="list-container">
         @if (loading() === 'loading') {
-        <div class="loading-state">
-            <p>Cargando...</p>
+        <div class="table-scroll-wrapper">
+            <bp-skeleton-table [rows]="5" [columns]="6"></bp-skeleton-table>
         </div>
         } @else {
         <div class="table-scroll-wrapper">
             <bp-products-table [products]="products()"></bp-products-table>
         </div>
-        <bp-pagination-control [total]="total()" (limitChange)="onLimitChange($event)"></bp-pagination-control>
+        <bp-pagination-control [total]="total()" [filteredCount]="filteredCount()"
+            (limitChange)="onLimitChange($event)"></bp-pagination-control>
         }
     </div>
 </div>

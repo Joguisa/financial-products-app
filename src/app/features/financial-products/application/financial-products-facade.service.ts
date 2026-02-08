@@ -13,6 +13,7 @@ export class FinancialProductsFacade {
   products = this.state.filteredProducts;
   loading = this.state.loading;
   total = this.state.totalProducts;
+  filteredCount = this.state.filteredCount;
 
   fetchAllProducts(): void {
     this.state.setLoading('loading');
