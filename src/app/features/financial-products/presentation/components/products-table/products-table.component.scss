@@ -121,7 +121,7 @@
 
 .dropdown-menu {
     position: absolute;
-    top: 100%;
+    bottom: 50%;
     right: 0;
     background-color: var(--white);
     border: 1px solid var(--border-color);
@@ -150,10 +150,6 @@
 
     &--danger {
         color: var(--error);
-
-        &:hover {
-            background-color: var(--error-bg);
-        }
     }
 }
 

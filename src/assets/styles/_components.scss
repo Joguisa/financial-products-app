@@ -62,7 +62,17 @@
         color: var(--white);
 
         &:hover {
-            background-color: #C62828;
+            background-color: var(--error-text);
+        }
+    }
+
+    &-outline {
+        background-color: transparent;
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+
+        &:hover {
+            background-color: var(--surface);
         }
     }
 

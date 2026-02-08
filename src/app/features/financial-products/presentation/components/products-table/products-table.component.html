@@ -7,17 +7,15 @@
                 <th>Descripción</th>
                 <th>Fecha de liberación</th>
                 <th>Fecha de reestructuración</th>
-                <th></th>
+                <th><span class="sr-only">Acciones</span></th>
             </tr>
         </thead>
         <tbody>
             @for (product of products(); track product.id) {
             <tr>
                 <td>
-                    <!-- <img [src]="product.logo" [alt]="product.name" class="product-logo"
-                        onerror="this.onerror=null; this.src='assets/icons/default-logo.svg'"> -->
-                    <img [src]="product.logo" [alt]="product.name" class="product-logo"
-                        (error)="onImageError($event)" />
+                    <img [src]="product.logo" [alt]="product.name" class="product-logo" loading="lazy" width="40"
+                        height="40" (error)="onImageError($event)">
                 </td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
@@ -25,13 +23,15 @@
                 <td>{{ product.date_revision | date:'dd/MM/yyyy' }}</td>
                 <td class="actions-cell">
                     <div class="dropdown">
-                        <button class="btn-icon" (click)="toggleMenu(product.id)" aria-label="Opciones">
+                        <button class="btn-icon" (click)="toggleMenu(product.id)"
+                            [attr.aria-label]="'Abrir menú de opciones para ' + product.name" aria-haspopup="true"
+                            [attr.aria-expanded]="openMenuId() === product.id">
                             ⋮
                         </button>
                         @if (openMenuId() === product.id) {
-                        <div class="dropdown-menu">
-                            <button class="dropdown-item" (click)="onEdit(product)">Editar</button>
-                            <button class="dropdown-item dropdown-item--danger"
+                        <div class="dropdown-menu" role="menu">
+                            <button class="dropdown-item" role="menuitem" (click)="onEdit(product)">Editar</button>
+                            <button class="dropdown-item dropdown-item--danger" role="menuitem"
                                 (click)="onDelete(product)">Eliminar</button>
                         </div>
                         }

@@ -1,6 +1,22 @@
+.back-link {
+    display: inline-block;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    padding: 0 1rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.15s ease;
+
+    &:hover {
+        color: var(--text-primary);
+    }
+}
+
 .page-card {
     max-width: 600px;
-    margin: 1.5rem auto 2rem;
+    margin: 0.75rem auto 2rem;
     background-color: var(--white);
     border-radius: var(--border-radius);
     padding: 1rem;

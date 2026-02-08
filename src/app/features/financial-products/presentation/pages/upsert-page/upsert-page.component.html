@@ -1,12 +1,12 @@
 <div class="container">
+    <a class="back-link" (click)="onFormCancel()">← Volver al listado</a>
     <div class="page-card">
         @if (isEditMode && !product()) {
         <div class="loading-state">
             <p>Cargando producto...</p>
         </div>
         } @else {
-        <bp-product-form [product]="product()" (formSubmit)="onFormSubmit($event)"
-            (formCancel)="onFormCancel()"></bp-product-form>
+        <bp-product-form [product]="product()" (formSubmit)="onFormSubmit($event)"></bp-product-form>
         }
     </div>
 </div>
