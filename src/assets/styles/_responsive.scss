@@ -1,0 +1,100 @@
+// Responsive Utilities
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+@mixin sm {
+    @media (min-width: $breakpoint-sm) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (min-width: $breakpoint-md) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: $breakpoint-lg) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: $breakpoint-xl) {
+        @content;
+    }
+}
+
+@mixin sm-down {
+    @media (max-width: #{$breakpoint-sm - 1px}) {
+        @content;
+    }
+}
+
+@mixin md-down {
+    @media (max-width: #{$breakpoint-md - 1px}) {
+        @content;
+    }
+}
+
+@mixin lg-down {
+    @media (max-width: #{$breakpoint-lg - 1px}) {
+        @content;
+    }
+}
+
+.hide-sm-down {
+    @include sm-down {
+        display: none !important;
+    }
+}
+
+.hide-md-down {
+    @include md-down {
+        display: none !important;
+    }
+}
+
+.show-sm-down {
+    display: none !important;
+
+    @include sm-down {
+        display: block !important;
+    }
+}
+
+.show-md-down {
+    display: none !important;
+
+    @include md-down {
+        display: block !important;
+    }
+}
+
+.table-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--bg-main);
+        border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--secondary-light);
+        border-radius: 3px;
+
+        &:hover {
+            background: var(--secondary);
+        }
+    }
+}

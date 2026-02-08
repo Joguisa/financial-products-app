@@ -1,33 +1,51 @@
+// ============================================
+// Design - Products App
+// ============================================
+
 :root {
-    --pantone-yellow: #FFD100;
-    --pantone-blue-dark: #13294B;
-    --pantone-gray: #A7A8AA;
-    --pantone-gray-dark: #4f4f4f;
+    --color-ultimate-gray: #928E85;
+    --color-illuminating: #F5DF4D;
 
-    --primary: var(--pantone-yellow);
-    --secondary: var(--pantone-gray);
-    --dark-blue-black: var(--pantone-blue-dark);
+    --primary: var(--color-illuminating);
+    --primary-hover: #E6D047;
+    --secondary: var(--color-ultimate-gray);
+    --secondary-light: #B5B1A9;
+    --dark-accent: #13294B;
 
-    --bg-main: #f9fafc;
-    --background: var(--bg-main);
-    --table-header-bg: var(--bg-main);
-    --white: #ffffff;
+    --white: #FFFFFF;
+    --bg-main: #F9FAFC;
     --surface: #F8F9FA;
-
-    --text-on-primary: var(--pantone-blue-dark);
-    --text-header: var(--pantone-gray-dark);
-    --text-body: var(--pantone-gray);
     --text-primary: #212121;
-    --text-secondary: #757575;
+    --text-secondary: #5A5A5A;
+    --text-on-primary: #1A1A1A;
+    --text-on-gray: #FFFFFF;
+    --text-header: #4F4F4F;
+    --text-body: #757575;
 
     --success: #4CAF50;
     --warning: #FF9800;
-    --error: #F44336;
-    --info: #2196F3;
-    --border-color: #E0E0E0;
-    --border-radius-sharp: 0px;
-    --border-radius: 8px;
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --error: #D32F2F;
+    --error-bg: #FFEBEE;
+    --info: #1976D2;
 
-    --search-width: 250px;
+    --border-color: #E0E0E0;
+    --border-radius: 4px;
+    --border-radius-lg: 8px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+    --table-header-bg: var(--bg-main);
+    --table-header-text: var(--text-header);
+
+    --input-border: var(--border-color);
+    --input-border-focus: var(--primary);
+    --input-border-error: var(--error);
+
+    --search-width: 280px;
+    --header-height: 70px;
+
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
 }

@@ -1,11 +1,24 @@
 .search-input {
-    padding: 0.7rem 1rem;
+    width: 100%;
+    max-width: var(--search-width);
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
-    width: var(--search-width);
+    border-radius: var(--border-radius);
+    background-color: var(--white);
+    color: var(--text-primary);
     outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
 
     &::placeholder {
-        color: var(--secondary);
+        color: var(--text-secondary);
+    }
+
+    &:hover {
+        border-color: var(--secondary);
+    }
+
+    @media (max-width: 575px) {
+        max-width: 100%;
     }
 }

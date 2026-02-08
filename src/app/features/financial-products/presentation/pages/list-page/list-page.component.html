@@ -7,15 +7,15 @@
     </div>
 
     <div class="list-container">
-        <div class="table-content">
-            @if (loading() === 'loading') {
-            <div class="loading-state">
-                <p>Cargando...</p>
-            </div>
-            } @else {
-            <bp-products-table [products]="products()"></bp-products-table>
-            <bp-pagination-control [total]="total()" (limitChange)="onLimitChange($event)"></bp-pagination-control>
-            }
+        @if (loading() === 'loading') {
+        <div class="loading-state">
+            <p>Cargando...</p>
         </div>
+        } @else {
+        <div class="table-scroll-wrapper">
+            <bp-products-table [products]="products()"></bp-products-table>
+        </div>
+        <bp-pagination-control [total]="total()" (limitChange)="onLimitChange($event)"></bp-pagination-control>
+        }
     </div>
 </div>

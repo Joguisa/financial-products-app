@@ -1,9 +1,18 @@
 @use 'assets/styles/variables';
+@use 'assets/styles/responsive';
 @use 'assets/styles/components';
 @use 'assets/styles/base';
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 1rem;
+
+    @media (min-width: 768px) {
+        padding: 0 1.5rem;
+    }
+
+    @media (min-width: 1200px) {
+        padding: 0 2rem;
+    }
 }
