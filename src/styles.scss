@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'assets/styles/variables';
+@use 'assets/styles/components';
+@use 'assets/styles/base';
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}

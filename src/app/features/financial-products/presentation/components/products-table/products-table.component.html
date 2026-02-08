@@ -1,1 +1,35 @@
-<p>products-table works!</p>
+<div class="table-responsive">
+    <table class="main-table">
+        <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Nombre del producto</th>
+                <th>Descripción</th>
+                <th>Fecha de liberación</th>
+                <th>Fecha de reestructuración</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (product of products(); track product.id) {
+            <tr>
+                <td>
+                    <img [src]="product.logo" [alt]="product.name" class="product-logo"
+                        onerror="this.src='assets/icons/default-logo.png'">
+                </td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.date_release | date:'dd/MM/yyyy' }}</td>
+                <td>{{ product.date_revision | date:'dd/MM/yyyy' }}</td>
+                <td>
+                    <button class="btn-icon">⋮</button>
+                </td>
+            </tr>
+            } @empty {
+            <tr class="empty-row">
+                <td colspan="6">No se encontraron productos</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,1 +1,21 @@
-<p>list-page works!</p>
+<div class="container">
+    <div class="list-header">
+        <bp-search-bar (search)="onSearch($event)"></bp-search-bar>
+        <button type="button" class="btn btn-primary" (click)="goToAddProduct()">
+            Agregar
+        </button>
+    </div>
+
+    <div class="list-container">
+        <div class="table-content">
+            @if (loading() === 'loading') {
+            <div class="loading-state">
+                <p>Cargando...</p>
+            </div>
+            } @else {
+            <bp-products-table [products]="products()"></bp-products-table>
+            <bp-pagination-control [total]="total()" (limitChange)="onLimitChange($event)"></bp-pagination-control>
+            }
+        </div>
+    </div>
+</div>

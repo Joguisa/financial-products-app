@@ -1,0 +1,37 @@
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: var(--white);
+    border-top: none;
+
+    .results-count {
+        color: var(--text-primary);
+        font-size: 0.9rem;
+    }
+
+    select {
+        padding: 0.6rem 2.5rem 0.6rem 1.2rem;
+
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background: var(--white);
+        outline: none;
+        cursor: pointer;
+        min-width: 70px;
+
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.8rem center;
+        background-size: 1em;
+
+        &:focus {
+            border-color: var(--primary);
+        }
+    }
+}
