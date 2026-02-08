@@ -115,10 +115,6 @@ button {
     outline-offset: 2px;
 }
 
-::selection {
-    background-color: var(--primary);
-    color: var(--text-on-primary);
-}
 
 * {
     scrollbar-width: thin;

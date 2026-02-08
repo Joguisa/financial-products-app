@@ -54,4 +54,14 @@ export class FinancialProductsStateService {
   removeProduct(id: string): void {
     this._products.update(list => list.filter(p => p.id !== id));
   }
+
+  addProduct(product: FinancialProduct): void {
+    this._products.update(list => [...list, product]);
+  }
+
+  updateProduct(id: string, product: FinancialProduct): void {
+    this._products.update(list =>
+      list.map(p => p.id === id ? { ...p, ...product } : p)
+    );
+  }
 }

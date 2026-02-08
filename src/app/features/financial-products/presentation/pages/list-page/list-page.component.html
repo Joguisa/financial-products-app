@@ -13,10 +13,14 @@
         </div>
         } @else {
         <div class="table-scroll-wrapper">
-            <bp-products-table [products]="products()"></bp-products-table>
+            <bp-products-table [products]="products()" (editProduct)="onEditProduct($event)"
+                (deleteProduct)="onDeleteProduct($event)"></bp-products-table>
         </div>
         <bp-pagination-control [total]="total()" [filteredCount]="filteredCount()"
             (limitChange)="onLimitChange($event)"></bp-pagination-control>
         }
     </div>
 </div>
+
+<bp-modal [isOpen]="showDeleteModal()" [title]="deleteModalTitle" confirmText="Confirmar" cancelText="Cancelar"
+    (confirm)="onConfirmDelete()" (cancel)="closeDeleteModal()"></bp-modal>

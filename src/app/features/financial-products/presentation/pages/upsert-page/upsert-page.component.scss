@@ -1,0 +1,25 @@
+.page-card {
+    max-width: 600px;
+    margin: 1.5rem auto 2rem;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+
+    @media (max-width: 575px) {
+        padding: 1rem;
+    }
+}
+
+.loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+
+    p {
+        margin: 0;
+        font-size: 1rem;
+    }
+}

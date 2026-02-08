@@ -1,1 +1,12 @@
-<p>upsert-page works!</p>
+<div class="container">
+    <div class="page-card">
+        @if (isEditMode && !product()) {
+        <div class="loading-state">
+            <p>Cargando producto...</p>
+        </div>
+        } @else {
+        <bp-product-form [product]="product()" (formSubmit)="onFormSubmit($event)"
+            (formCancel)="onFormCancel()"></bp-product-form>
+        }
+    </div>
+</div>

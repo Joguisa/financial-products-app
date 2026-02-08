@@ -14,15 +14,28 @@
             @for (product of products(); track product.id) {
             <tr>
                 <td>
+                    <!-- <img [src]="product.logo" [alt]="product.name" class="product-logo"
+                        onerror="this.onerror=null; this.src='assets/icons/default-logo.svg'"> -->
                     <img [src]="product.logo" [alt]="product.name" class="product-logo"
-                        onerror="this.src='assets/icons/default-logo.png'">
+                        (error)="onImageError($event)" />
                 </td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.date_release | date:'dd/MM/yyyy' }}</td>
                 <td>{{ product.date_revision | date:'dd/MM/yyyy' }}</td>
-                <td>
-                    <button class="btn-icon">⋮</button>
+                <td class="actions-cell">
+                    <div class="dropdown">
+                        <button class="btn-icon" (click)="toggleMenu(product.id)" aria-label="Opciones">
+                            ⋮
+                        </button>
+                        @if (openMenuId() === product.id) {
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item" (click)="onEdit(product)">Editar</button>
+                            <button class="dropdown-item dropdown-item--danger"
+                                (click)="onDelete(product)">Eliminar</button>
+                        </div>
+                        }
+                    </div>
                 </td>
             </tr>
             } @empty {

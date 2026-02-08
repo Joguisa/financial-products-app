@@ -1,1 +1,88 @@
-<p>product-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="product-form">
+    <h1 class="form-title">{{ isEditMode ? 'Editar Producto' : 'Formulario de Registro' }}</h1>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="product-id">ID</label>
+            <input type="text" id="product-id" class="form-control" formControlName="id" maxlength="10"
+                [class.input-error]="isInvalid('id')">
+            @if (hasError('id', 'required')) {
+            <span class="error-text">Este campo es requerido!</span>
+            }
+            @if (hasError('id', 'minLengthTrimmed')) {
+            <span class="error-text">Mínimo 3 caracteres!</span>
+            }
+            @if (hasError('id', 'maxLengthTrimmed')) {
+            <span class="error-text">Máximo 10 caracteres!</span>
+            }
+            @if (hasError('id', 'idExists')) {
+            <span class="error-text">ID no válido!</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="product-name">Nombre</label>
+            <input type="text" id="product-name" class="form-control" formControlName="name" maxlength="100"
+                [class.input-error]="isInvalid('name')">
+            @if (hasError('name', 'required')) {
+            <span class="error-text">Este campo es requerido!</span>
+            }
+            @if (hasError('name', 'minLengthTrimmed')) {
+            <span class="error-text">Mínimo 5 caracteres!</span>
+            }
+            @if (hasError('name', 'maxLengthTrimmed')) {
+            <span class="error-text">Máximo 100 caracteres!</span>
+            }
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="product-description">Descripción</label>
+            <input type="text" id="product-description" class="form-control" formControlName="description"
+                maxlength="200" [class.input-error]="isInvalid('description')">
+            @if (hasError('description', 'required')) {
+            <span class="error-text">Este campo es requerido!</span>
+            }
+            @if (hasError('description', 'minLengthTrimmed')) {
+            <span class="error-text">Mínimo 10 caracteres!</span>
+            }
+            @if (hasError('description', 'maxLengthTrimmed')) {
+            <span class="error-text">Máximo 200 caracteres!</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="product-logo">Logo</label>
+            <input type="text" id="product-logo" class="form-control" formControlName="logo"
+                [class.input-error]="isInvalid('logo')">
+            @if (hasError('logo', 'required')) {
+            <span class="error-text">Este campo es requerido!</span>
+            }
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="product-date-release">Fecha Liberación</label>
+            <input type="date" id="product-date-release" class="form-control" formControlName="date_release"
+                [class.input-error]="isInvalid('date_release')">
+            @if (hasError('date_release', 'required')) {
+            <span class="error-text">Este campo es requerido!</span>
+            }
+            @if (hasError('date_release', 'dateInPast')) {
+            <span class="error-text">Fecha debe ser igual o mayor a hoy!</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="product-date-revision">Fecha Revisión</label>
+            <input type="date" id="product-date-revision" class="form-control" formControlName="date_revision" readonly>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="onReset()">Reiniciar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid || form.pending">Enviar</button>
+    </div>
+</form>

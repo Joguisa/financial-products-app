@@ -12,7 +12,6 @@ export class FinancialProductsApiService {
   private readonly url = `${environment.baseUrl}/products`;
 
   getProducts(): Observable<FinancialProduct[]> {
-    // return this.http.get<FinancialProduct[]>(this.url);
     return this.http.get<{ data: FinancialProduct[] }>(this.url).pipe(
       map(response => response.data)
     );
@@ -23,14 +22,20 @@ export class FinancialProductsApiService {
   }
 
   createProduct(product: FinancialProduct): Observable<FinancialProduct> {
-    return this.http.post<FinancialProduct>(this.url, product);
+    return this.http.post<{ message: string; data: FinancialProduct }>(this.url, product).pipe(
+      map(response => response.data)
+    );
   }
 
-  updateProduct(id: string, product: FinancialProduct): Observable<FinancialProduct> {
-    return this.http.put<FinancialProduct>(`${this.url}/${id}`, product);
+  updateProduct(id: string, product: Omit<FinancialProduct, 'id'>): Observable<FinancialProduct> {
+    return this.http.put<{ message: string; data: FinancialProduct }>(`${this.url}/${id}`, product).pipe(
+      map(response => response.data)
+    );
   }
 
   deleteProduct(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.url}/${id}`);
+    return this.http.delete<{ message: string }>(`${this.url}/${id}`).pipe(
+      map(() => void 0)
+    );
   }
 }

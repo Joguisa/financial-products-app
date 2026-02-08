@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { FinancialProductsApiService } from '../../../core/services/api/financial-products-api.service';
 import { FinancialProductsStateService } from '../infrastructure/financial-products-state.service';
-import { tap, finalize } from 'rxjs';
+import { FinancialProduct } from '../domain/financial-product.model';
+import { Observable, tap, finalize } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +24,26 @@ export class FinancialProductsFacade {
     ).subscribe();
   }
 
-  deleteProduct(id: string): void {
-    this.api.deleteProduct(id).pipe(
+  getProductById(id: string): FinancialProduct | undefined {
+    return this.state.products().find(p => p.id === id);
+  }
+
+  createProduct(product: FinancialProduct): Observable<FinancialProduct> {
+    return this.api.createProduct(product).pipe(
+      tap(created => this.state.addProduct(created))
+    );
+  }
+
+  updateProduct(id: string, product: FinancialProduct): Observable<FinancialProduct> {
+    return this.api.updateProduct(id, product).pipe(
+      tap(updated => this.state.updateProduct(id, updated))
+    );
+  }
+
+  deleteProduct(id: string): Observable<void> {
+    return this.api.deleteProduct(id).pipe(
       tap(() => this.state.removeProduct(id))
-    ).subscribe();
+    );
   }
 
   updateSearch(query: string): void {
