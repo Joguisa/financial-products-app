@@ -1,27 +1,89 @@
-# BpFinancialProducts
+# Proyecto de Gestión de Productos Financieros
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.20.
+Este proyecto es una aplicación web desarrollada con **Angular 18** para la gestión de productos financieros. Permite listar, agregar, editar y eliminar productos, cumpliendo con los estándares de calidad y una arquitectura modular.
 
-## Development server
+## 🚀 Tecnologías Utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Angular 18**: Framework principal para el desarrollo de la SPA.
+- **Jest**: Framework de pruebas unitarias (migrado para mayor rendimiento y cobertura).
+- **SCSS**: Preprocesador CSS para estilos modulares y mantenibles.
+- **Clean Architecture Layers**: Organización del código dividida en capas de responsabilidad (Domain, Application, Infrastructure, Presentation).
+- **RxJS**: Gestión de flujos de datos asíncronos.
+- **Signals**: Nueva API de reactividad de Angular para una gestión de estado eficiente.
 
-## Code scaffolding
+## 📁 Estructura del Proyecto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+El proyecto sigue una organización por características (features) y capas:
 
-## Build
+- `src/app/core`: Servicios globales, interceptores y configuración base.
+- `src/app/shared`: Componentes de interfaz (UI) genéricos y validadores personalizados.
+- `src/app/features/financial-products`:
+    - `domain`: Modelos e interfaces que definen las reglas de negocio.
+    - `application`: Facades que orquestan el flujo de datos.
+    - `infrastructure`: Gestión de estado y persistencia.
+    - `presentation`: Componentes de página y elementos visuales específicos.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## ⚙️ Configuración del Proxy (CORS)
 
-## Running unit tests
+Para el desarrollo local, se implementó un archivo `proxy.conf.json` para evitar problemas de CORS con el servidor de servicios:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```json
+{
+    "/bp": {
+        "target": "http://localhost:3002",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}
+```
 
-## Running end-to-end tests
+### ¿Por qué es importante?
+1. **Evita Bloqueos**: El navegador trata las peticiones como si fueran al mismo dominio de desarrollo (`localhost:4200`), eliminando restricciones de seguridad de origen cruzado.
+2. **Abstracción**: Permite usar rutas relativas (`/bp`) en los entornos, lo que facilita la configuración sin cambiar el código fuente.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🛠️ Instalación y Ejecución
 
-## Further help
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/Joguisa/financial-products-app.git
+   cd bp-financial-products
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+2. **Instalar dependencias**:
+   ```bash
+   npm install
+   ```
+
+3. **Ejecutar en modo desarrollo**:
+   ```bash
+   ng serve -o
+   ```
+   Esto compilará la aplicación y abrirá automáticamente el navegador en `http://localhost:4200`.
+
+## 🧪 Pruebas Unitarias
+
+Se utiliza **Jest** para asegurar la calidad del código.
+
+- **Ejecutar todas las pruebas**:
+  ```bash
+  npm test
+  ```
+- **Ver cobertura de código**:
+  ```bash
+  npm run test:coverage
+  ```
+  Actualmente, el proyecto mantiene una cobertura superior al **70%**.
+
+## 📄 Especificaciones Implementadas
+
+- **Listado de Productos**: Tabla con búsqueda dinámica y control de paginación (5, 10, 20 registros).
+- **Validaciones de Negocio**: 
+    - Validación asíncrona de ID de producto.
+    - Cálculo automático de fecha de revisión (Registro + 1 año).
+    - Feedback visual inmediato en formularios.
+- **Diseño Responsivo**: Interfaz adaptada a diferentes resoluciones de pantalla.
+- **Manejo de Errores**: Interceptor global para capturar fallos de red.
+
+---
+Proyecto desarrollado como parte de una evaluación técnica de servicios financieros.
